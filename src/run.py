@@ -1,10 +1,14 @@
 import pygame
-import sys
+import os
 from ghosts.ghost import *
 from game.pill import Pill
 from game.config import *
 from players.setup import *
 from ghosts.setup import *
+
+# Obtém o caminho absoluto para a fonte pra não dar problema no Windows
+base_dir = os.path.dirname(__file__)
+font_path = os.path.join(base_dir, 'game', 'PressStart2P-Regular.ttf')
 
 # Adicione o seu agente aqui!
 agents = [
@@ -30,7 +34,6 @@ def draw_maze(screen, pills):
                     pygame.draw.circle(screen, WHITE, (x * TILE_SIZE + TILE_SIZE // 2, y * TILE_SIZE + TILE_SIZE // 2), TILE_SIZE // 6)
 
 def draw_text(screen, agents):
-    font_path = 'src/game/PressStart2P-Regular.ttf'
     font = pygame.font.Font(font_path, 23)
     
     text_surface = font.render("RINHA DE PAC-MAN", True, WHITE)   

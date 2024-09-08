@@ -1,6 +1,6 @@
 # tela
 WIDTH, HEIGHT = 1300, 740
-FPS = 10
+FPS = 5
 TILE_SIZE = 24
 
 # cores
@@ -47,3 +47,6 @@ MAZE = [
     "#.......................................#",
     "#########################################"
 ]
+
+# variável global que vai armazenar as posições de todos os agentes no jogo
+AGENTS_POSITIONS = {}

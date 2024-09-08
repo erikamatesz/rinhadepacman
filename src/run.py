@@ -23,14 +23,13 @@ ghosts = [
     PINKY
 ]
 
-# adicione o seu agente aqui
+# Adicione o seu agente aqui!
 agents = [
     CINDY_LAUPER,
     DAVID_BOWIE,
     FREDDIE_MERCURY,
     GEORGE_MICHAEL,
     MADONNA,
-    PRINCE,
     # NOME_DO_SEU_AGENTE
 ]
 
@@ -52,25 +51,27 @@ while running:
         if event.type == pygame.QUIT:
             running = False
     
-    # quem não foi de arrasta...
+    # segue o baile pra quem não foi de arrasta
     for agent in agents:
         if agent.alive:
-            agent.move(MAZE, pills)
+            agent.move(pills)
+            agent.update_position() 
     
-    # faz os fantasmas perseguirem os agentes
+    # faz os fantasmas perseguirem os agentes que estão vivos
     for ghost in ghosts:
         for agent in agents:
             if agent.alive:
-                ghost.move(agent, MAZE)
+                ghost.move(agent)
     
     # verifica colisões
     for ghost in ghosts:
         for agent in agents:
             if ghost.check_collision(agent) and agent.alive:
-                print(f"{ghost.name} fez {agent.name} ir de arrasta!")
                 agent.alive = False
-    
-    # score
+                if agent.name in AGENTS_POSITIONS:
+                    del AGENTS_POSITIONS[agent.name]
+
+    # mostra o score no console
     for agent in agents:
         agent.print_score()
     

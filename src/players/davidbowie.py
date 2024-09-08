@@ -8,16 +8,17 @@ class DavidBowie(Pacman):
         y = 10
         color = (250, 128, 114)
         super().__init__("David Bowie", x, y, color)
+        self.update_position()
     
-    def move(self, maze, pills):
+    def move(self, pills):
         possible_moves = []
-        if self.x > 0 and maze[self.y][self.x - 1] != '#':
+        if self.x > 0 and MAZE[self.y][self.x - 1] != '#':
             possible_moves.append((-1, 0))
-        if self.x < len(maze[0]) - 1 and maze[self.y][self.x + 1] != '#':
+        if self.x < len(MAZE[0]) - 1 and MAZE[self.y][self.x + 1] != '#':
             possible_moves.append((1, 0))
-        if self.y > 0 and maze[self.y - 1][self.x] != '#':
+        if self.y > 0 and MAZE[self.y - 1][self.x] != '#':
             possible_moves.append((0, -1))
-        if self.y < len(maze) - 1 and maze[self.y + 1][self.x] != '#':
+        if self.y < len(MAZE) - 1 and MAZE[self.y + 1][self.x] != '#':
             possible_moves.append((0, 1))
         
         if possible_moves:
@@ -26,3 +27,6 @@ class DavidBowie(Pacman):
             self.y += move[1]
 
         self.eat_pills(pills)
+
+    def update_position(self):
+        AGENTS_POSITIONS[self.name] = (self.x, self.y)

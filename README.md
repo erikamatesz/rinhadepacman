@@ -41,6 +41,8 @@ Nesta implementação, não haverá a lógica da "super pílula" que permite que
 
 Cada pílula comida vale 1 ponto para o Pac-Man que a comeu.
 
+A classe que define a pílula é `src/game/pill.py` e uma lista com as pílulas é passada para o Pac-Man.
+
 ```py
 # Variável MAZE
 
@@ -138,7 +140,7 @@ Quando um fantasma ocupa a mesma posição de um Pac-Man, ele "mata" aquele Pac-
 
 Para prosseguir, você precisa ter o Python 3.9 ou superior instalado na sua máquina.
 
-Recomendo a utilização do Visual Studio Code para testar o projeto em sua máquina e desenvolver o seu agente.
+Recomendo a utilização do Visual Studio Code para testar o projeto em sua máquina e desenvolver o seu Pac-Man.
 
 ### macOS e Linux
 
@@ -221,7 +223,7 @@ Nela você vai poder visualizar o mapa, escolher uma posição inicial para o se
 
 Feito isso, bora codar! :)
 
-Toda a estrutura do jogo está pronta e você não precisa alterar nada que não seja o seu próprio agente, ok?
+Toda a estrutura do jogo está pronta e você não precisa alterar nada que não seja o seu próprio Pac-Man, ok?
 
 Na pasta `src/players` você encontra os arquivos referentes aos agentes disponíveis, além de alguns outros.
 
@@ -233,7 +235,7 @@ Abra o arquivo `nomedoseuagente.py` e leia atentamente as instruções contidas 
 
 Depois de codar o seu agente e já ter renomeado / alterado tudo o que é solicitado, abra o arquivo `src/players/setup.py` e siga as instruções dele.
 
-Basicamente, em `setup.py` você vai importar e instanciar o seu agente.
+Basicamente, em `setup.py` você vai importar e instanciar o seu Pac-Man.
 
 A instrução final contida em `setup.py` pede que você abra o arquivo `run.py` e altere esta parte:
 

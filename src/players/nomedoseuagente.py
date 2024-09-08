@@ -33,7 +33,7 @@ class NomeDoSeuAgente(Pacman):
         self.update_position()
     
     def move(self, pills):
-        # Lembre-se que você tem acesso às variáveis MAZE e AGENTS_POSITIONS!
+        # Lembre-se que, além da variável pills, você tem acesso às variáveis globais MAZE e AGENTS_POSITIONS!
 
         # ------------------------------ Início da sua implementação ----------------------------------------
 
@@ -46,4 +46,4 @@ class NomeDoSeuAgente(Pacman):
     # Não altere essa implementação!
     def update_position(self):
         AGENTS_POSITIONS[self.name] = (self.x, self.y)
-        
+

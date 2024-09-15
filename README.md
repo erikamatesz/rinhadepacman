@@ -20,6 +20,8 @@ Este `README` possui as seguintes seções:
     - Como Testar o seu Pac-Man
     - Como Enviar
 
+- Resolução de Problemas
+
 ## Conhecendo o Jogo
 
 ### Objetivos do seu Pac-Man
@@ -256,3 +258,18 @@ agents = [
 Quando você terminar de codar e testar seu Pac-Man, envie somente o arquivo do seu agente para a pasta indicada [no drive](https://drive.google.com/drive/folders/1dfTdQ-G3b0Hp_PDBVmN0Arq2nGvcQ7oe?usp=drive_link).
 
 Não deixe de sinalizar nos comentários do arquivo se precisou inserir alguma dependência no `requirements.txt`, ok?
+
+## Resolução de Problemas
+
+### Linux Ubuntu 22.04 com GPU Nvidia
+
+_Contribuição de Guilherme Molnar :)_
+
+Caso esteja faltando algum driver, instale os que estiverem faltando:
+
+```sh
+sudo apt-get install mesa-utils mesa-vulkan-drivers libgl1-mesa-dri
+```
+
+Em seguida, coloque Nvidia em modo performance: nas configurações da Nvidia, em PRIME Profiles, selecionar "NVIDIA Performance Mode" e reiniciar o PC.
+

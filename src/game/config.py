@@ -1,6 +1,6 @@
 # tela
 WIDTH, HEIGHT = 1400, 740
-FPS = 5
+FPS = 10
 TILE_SIZE = 24
 
 # cores

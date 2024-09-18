@@ -272,4 +272,3 @@ sudo apt-get install mesa-utils mesa-vulkan-drivers libgl1-mesa-dri
 ```
 
 Em seguida, coloque Nvidia em modo performance: nas configurações da Nvidia, em PRIME Profiles, selecionar "NVIDIA Performance Mode" e reiniciar o PC.
-

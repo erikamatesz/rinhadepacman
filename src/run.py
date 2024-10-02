@@ -1,14 +1,9 @@
 import pygame
-import os
 from ghosts.ghost import *
 from game.pill import Pill
 from game.config import *
 from players.setup import *
 from ghosts.setup import *
-
-# obtém o caminho absoluto para a fonte pra não dar problema no Windows
-base_dir = os.path.dirname(__file__)
-font_path = os.path.join(base_dir, 'game', 'PressStart2P-Regular.ttf')
 
 # adicione o seu agente aqui!
 agents = [
@@ -46,15 +41,15 @@ def draw_maze(screen, pills):
                 else:
                     pygame.draw.circle(screen, WHITE, (x * TILE_SIZE + TILE_SIZE // 2, y * TILE_SIZE + TILE_SIZE // 2), TILE_SIZE // 6)
 
-def draw_text(screen, agents, game_over, winner=None):
-    font = pygame.font.Font(font_path, 23)
+def draw_text(screen, agents, game_over, winners=None):
+    font = pygame.font.Font(FONT_PATH, 23)
     
-    text_surface = font.render("RINHA DE PAC-MAN", True, WHITE)   
+    text_surface = font.render("RINHA DE PAC-MAN", True, WHITE)
     text_x = WIDTH - 390
     text_y = 30
     screen.blit(text_surface, (text_x, text_y))
     
-    score_font = pygame.font.Font(font_path, 18)
+    score_font = pygame.font.Font(FONT_PATH, 18)
     score_y = text_y + 40 
 
     for agent in agents:
@@ -75,12 +70,15 @@ def draw_text(screen, agents, game_over, winner=None):
             score_y += 30
     
     if game_over:
-        end_game_font = pygame.font.Font(font_path, 18)
+        end_game_font = pygame.font.Font(FONT_PATH, 18)
         end_game_surface = end_game_font.render("Fim de jogo!", True, WHITE)
         screen.blit(end_game_surface, (text_x, score_y + 30))
-        
-        if winner:
-            winner_surface = end_game_font.render(f"{winner.name} ganhou!", True, WHITE)
+
+        if winners:
+            if len(winners) == 1:
+                winner_surface = end_game_font.render(f"{winners[0].name} ganhou!", True, WHITE)
+            else:
+                winner_surface = end_game_font.render(f"{winners[0].name} e {winners[1].name} ganharam!", True, WHITE)
             screen.blit(winner_surface, (text_x, score_y + 60))
 
 def calculate_max_possible_score(agent, pills):
@@ -97,8 +95,10 @@ def check_if_last_agent_can_win(agents, pills):
             return False
     return True
 
-def find_winner(agents):
-    return max(agents, key=lambda agent: AGENT_SCORES[agent.name])
+def find_winners(agents):
+    max_score = max(AGENT_SCORES[agent.name] for agent in agents)
+    winners = [agent for agent in agents if AGENT_SCORES[agent.name] == max_score]
+    return winners
 
 ghosts = [
     BLINKY,
@@ -121,7 +121,7 @@ clock = pygame.time.Clock()
 # loop principal
 running = True
 game_over = False
-winner = None
+winners = None
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -133,18 +133,18 @@ while running:
         # verifica se todas as pílulas foram comidas
         if not any(pill.eaten is False for pill in pills):
             game_over = True
-            winner = find_winner(agents)
+            winners = find_winners(agents)
 
         # verifica se todos os agentes foram comidos
         elif all(not agent.alive for agent in agents):
             game_over = True
-            winner = find_winner(agents)
+            winners = find_winners(agents)
 
         # seeee não foram... verifica se há apenas um agente e se ele não pode mais vencer
         elif len([agent for agent in agents if agent.alive]) == 1:
             if not check_if_last_agent_can_win(agents, pills):
                 game_over = True
-                winner = find_winner(agents)
+                winners = find_winners(agents)
     
         # segue o baile pra quem não foi de arrasta
         for agent in agents:
@@ -167,7 +167,7 @@ while running:
 
     screen.fill(BLACK)
     draw_maze(screen, pills)
-    draw_text(screen, agents, game_over, winner)
+    draw_text(screen, agents, game_over, winners)
     
     for pill in pills:
         pill.draw(screen)

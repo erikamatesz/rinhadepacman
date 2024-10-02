@@ -1,3 +1,9 @@
+import os
+
+# obtém o caminho absoluto para a fonte pra não dar problema no Windows
+base_dir = os.path.dirname(__file__)
+FONT_PATH = os.path.join(base_dir, 'PressStart2P-Regular.ttf')
+
 # tela
 WIDTH, HEIGHT = 1400, 740
 FPS = 15

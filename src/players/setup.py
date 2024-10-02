@@ -14,9 +14,11 @@ from .juvenal import Juvenal
 from .kawabanga import Kawabanga
 from .labirinthis import Labirinthis
 from .lups import Lups
+from .neo import Neo
 from .nielsen import Nielsen
 from .pikachu import Pikachu
 from .rapadura import Rapadura
+from .semnome import SemNome
 from .stitch import Stitch
 from .taz import Taz
 from .yoda import Yoda
@@ -41,9 +43,11 @@ JUVENAL = Juvenal()
 KAWABANGA = Kawabanga()
 LABIRINTHIS = Labirinthis()
 LUPS = Lups()
+NEO = Neo()
 NIELSEN = Nielsen()
 PIKACHU = Pikachu()
 RAPADURA = Rapadura()
+SEMNOME = SemNome()
 STITCH = Stitch()
 TAZ = Taz()
 YODA = Yoda()

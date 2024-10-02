@@ -23,9 +23,11 @@ agents = [
     KAWABANGA,
     LABIRINTHIS,
     LUPS,
+    NEO,
     NIELSEN,
     PIKACHU,
     RAPADURA,
+    SEMNOME,
     STITCH,
     TAZ,
     YODA
